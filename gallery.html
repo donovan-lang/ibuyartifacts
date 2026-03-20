@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | iBuyArtifacts</title>
+  <meta name="description" content="Browse our collection of authenticated ancient artifacts. Egyptian, Greek, Roman, Mesopotamian, Asian, and Pre-Columbian antiquities.">
+  <meta property="og:title" content="Gallery | iBuyArtifacts">
+  <meta property="og:description" content="Explore authenticated ancient artifacts from civilizations around the world.">
+  <link rel="canonical" href="https://ibuyartifacts.com/gallery.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: { DEFAULT: '#D4AF37', light: '#F4E5A3', dark: '#B8960C' },
+          dark: { DEFAULT: '#111827', lighter: '#1F2937', card: '#1a2332' }
+        },
+        fontFamily: {
+          serif: ['Playfair Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="bg-dark text-gray-200 font-sans">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-gold/20 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="font-serif text-2xl text-gold font-bold tracking-wide">iBuyArtifacts</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gray-300 hover:text-gold transition">Home</a>
+          <a href="/gallery.html" class="nav-link text-gold transition">Gallery</a>
+          <a href="/appraisal.html" class="nav-link text-gray-300 hover:text-gold transition">Appraisal</a>
+          <a href="/news.html" class="nav-link text-gray-300 hover:text-gold transition">News</a>
+          <a href="/sell.html" class="bg-gold text-dark px-5 py-2 rounded-lg font-semibold hover:bg-gold-light transition">Sell Your Artifact</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gold text-2xl" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gold/20">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/" class="block text-gray-300 hover:text-gold py-2">Home</a>
+        <a href="/gallery.html" class="block text-gold py-2">Gallery</a>
+        <a href="/appraisal.html" class="block text-gray-300 hover:text-gold py-2">Appraisal</a>
+        <a href="/news.html" class="block text-gray-300 hover:text-gold py-2">News</a>
+        <a href="/sell.html" class="block bg-gold text-dark px-4 py-2 rounded-lg text-center font-semibold">Sell Your Artifact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 hero-pattern relative">
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl gold-gradient-text mb-4">Artifact Gallery</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">Browse authenticated pieces from ancient civilizations. Each artifact represents the types of items we actively purchase from collectors and estates.</p>
+    </div>
+  </section>
+
+  <!-- Filter + Search -->
+  <section class="py-8 bg-dark-lighter border-b border-gold/10">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-wrap gap-2 justify-center">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="egyptian">Egyptian</button>
+          <button class="filter-btn" data-filter="greek">Greek</button>
+          <button class="filter-btn" data-filter="roman">Roman</button>
+          <button class="filter-btn" data-filter="mesopotamian">Mesopotamian</button>
+          <button class="filter-btn" data-filter="asian">Asian</button>
+          <button class="filter-btn" data-filter="pre-columbian">Pre-Columbian</button>
+        </div>
+        <div class="relative w-full md:w-72">
+          <input type="text" id="gallery-search" placeholder="Search artifacts..." class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-2 pl-10 text-sm text-gray-200 placeholder-gray-500">
+          <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 stagger-children">
+
+        <!-- Egyptian Artifacts -->
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="egyptian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DP-31265-001.jpg" alt="Silver Ring with Scarab" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Silver Ring with Scarab</h3>
+            <p class="text-gold text-xs mb-2">Egyptian &bull; Dynasty 19-20, 1303-1085 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Silver and ivory ring bearing the "Men-kheper-ra" scarab seal. A personal seal of authority from the New Kingdom era.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $1,200 - $3,500</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="egyptian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/eg/web-large/23.10.28_EGDP017156.jpg" alt="Gold Sheet Amulet" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Gold Sheet Amulet</h3>
+            <p class="text-gold text-xs mb-2">Egyptian &bull; Late Period, 664-380 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Delicate amulet fashioned from gold sheet. Worn for protective and ritual purposes during the Late Period of ancient Egypt.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $2,000 - $5,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="egyptian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/eg/web-large/DT227703.jpg" alt="Canopic Jar with Queen Lid" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Royal Canopic Jar</h3>
+            <p class="text-gold text-xs mb-2">Egyptian &bull; Amarna Period, ca. 1349-1330 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Travertine canopic jar with a lid depicting a queen. Crafted from Egyptian alabaster with blue glass and obsidian inlays.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $15,000 - $45,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="egyptian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DP121826.jpg" alt="Faience Ushabti" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Faience Ushabti Figure</h3>
+            <p class="text-gold text-xs mb-2">Egyptian &bull; 7th-6th Century BC</p>
+            <p class="text-gray-400 text-xs mb-2">Faience funerary figurine placed in tombs to serve the deceased in the afterlife. These "answerers" performed labor on behalf of the dead.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $400 - $1,800</p>
+          </div>
+        </div>
+
+        <!-- Roman Artifacts -->
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="roman">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/LC-08_170_75a.jpg" alt="Silver Denarius" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Silver Denarius</h3>
+            <p class="text-gold text-xs mb-2">Roman &bull; Late Republican, ca. 96 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Silver denarius of Postumius Albinus. The denarius was the standard silver coin of the Roman Republic and the backbone of Roman commerce.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $300 - $1,200</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="roman">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/es/web-large/DP-19649-003.jpg" alt="Apothecary Cabinet" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Gilded Apothecary Cabinet</h3>
+            <p class="text-gold text-xs mb-2">European &bull; 1617-18</p>
+            <p class="text-gray-400 text-xs mb-2">Exquisite ebonized cabinet with gilded silver fittings, containing 32 glass vessels. A rare example of early pharmacy furniture.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $25,000 - $60,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="roman">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/es/web-large/DP-14793-001.jpg" alt="Silver Triptych" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Triptych with the Mandylion</h3>
+            <p class="text-gold text-xs mb-2">European &bull; 1637</p>
+            <p class="text-gray-400 text-xs mb-2">Silver-gilt triptych adorned with niello, enamel, sapphires, rubies, and pearls. An extraordinary devotional masterpiece.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $35,000 - $80,000</p>
+          </div>
+        </div>
+
+        <!-- Greek Artifacts -->
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="greek">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DP116936.jpg" alt="Attic Amphora" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Attic Black-Figure Amphora</h3>
+            <p class="text-gold text-xs mb-2">Greek &bull; Archaic, ca. 530 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Terracotta amphora standing over 22 inches tall. Black-figure technique with incised detail, a hallmark of Attic ceramic artistry.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $8,000 - $25,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="greek">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DT262.jpg" alt="Bronze Helmet" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Cretan Bronze Helmet</h3>
+            <p class="text-gold text-xs mb-2">Greek &bull; Archaic, late 7th Century BC</p>
+            <p class="text-gray-400 text-xs mb-2">Bronze helmet from ancient Crete. This type of open-face helmet provided protection while allowing the warrior clear vision in battle.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $12,000 - $35,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="greek">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/eg/web-large/DP-26623-002.jpg" alt="Terracotta Figurine" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Terracotta Figurine</h3>
+            <p class="text-gold text-xs mb-2">Greco-Roman &bull; 30 BC - 364 AD</p>
+            <p class="text-gray-400 text-xs mb-2">Small terracotta figurine from the Roman Period. These molded figures served as votive offerings, toys, and decorative household objects.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $500 - $2,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="greek">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DT5480.jpg" alt="Terracotta Kylix" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Attic Red-Figure Kylix</h3>
+            <p class="text-gold text-xs mb-2">Greek &bull; Archaic, ca. 500 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Wide-bowled drinking cup used at symposia. The interior typically depicts a single scene revealed as the drinker finishes their wine.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $6,000 - $18,000</p>
+          </div>
+        </div>
+
+        <!-- Mesopotamian Artifacts -->
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="mesopotamian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/an/web-large/DT860.jpg" alt="Cylinder Seal" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Akkadian Cylinder Seal</h3>
+            <p class="text-gold text-xs mb-2">Mesopotamian &bull; Akkadian, ca. 2250-2150 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Carved chert cylinder seal depicting a hunting scene. When rolled across wet clay, it produced a continuous relief impression.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $2,000 - $7,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="mesopotamian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/an/web-large/DP293243.jpg" alt="Cuneiform Tablet" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Proto-Cuneiform Tablet</h3>
+            <p class="text-gold text-xs mb-2">Sumerian &bull; Jemdet Nasr, ca. 3100-2900 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Clay tablet recording barley distribution with cylinder seal impressions. Among the earliest writing systems in human history.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $5,000 - $15,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="mesopotamian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/an/web-large/DP375095.jpg" alt="Foundation Figure of King Shulgi" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Foundation Figure of King Shulgi</h3>
+            <p class="text-gold text-xs mb-2">Neo-Sumerian &bull; Ur III, ca. 2094-2047 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Copper figure depicting King Shulgi carrying a basket. Buried in temple foundations as a ritual deposit to consecrate the building.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $8,000 - $25,000</p>
+          </div>
+        </div>
+
+        <!-- Asian Artifacts -->
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="asian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/as/web-large/DP-42381-001.jpg" alt="Tang Dynasty Horse" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Tang Dynasty Horse</h3>
+            <p class="text-gold text-xs mb-2">Chinese &bull; Tang Dynasty, 8th Century</p>
+            <p class="text-gray-400 text-xs mb-2">Monumental earthenware horse with brown glazes. Standing 27 inches tall, these tomb figures reflect the Tang elite's love of horses.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $5,000 - $20,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="asian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/as/web-large/83105.jpg" alt="Nephrite Jade Disc" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Nephrite Jade Disc</h3>
+            <p class="text-gold text-xs mb-2">Chinese &bull; Qing Dynasty, 1736-1795</p>
+            <p class="text-gray-400 text-xs mb-2">Grayish blue nephrite bi disc from the Qianlong period. Bi discs have been symbols of heaven and ritual authority since the Neolithic era.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $3,000 - $10,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="asian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/md/web-large/tr462-2010s2.jpg" alt="Gold Vessel" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Ancient Gold Vessel</h3>
+            <p class="text-gold text-xs mb-2">Early Bronze Age &bull; ca. 1750-1500 BC</p>
+            <p class="text-gray-400 text-xs mb-2">Small gold vessel from the Early Bronze Age. Gold vessels of this era are exceptionally rare and suggest elite ritual or funerary use.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $20,000 - $50,000</p>
+          </div>
+        </div>
+
+        <!-- Pre-Columbian Artifacts -->
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="pre-columbian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/ao/web-large/DP-23468-001.jpg" alt="Maya Whistling Vessel" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Maya Whistling Vessel</h3>
+            <p class="text-gold text-xs mb-2">Maya &bull; 400-500 CE</p>
+            <p class="text-gray-400 text-xs mb-2">Ceramic whistling vessel that produces sound when liquid is poured. A remarkable engineering feat combined with artistic expression.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $4,000 - $15,000</p>
+          </div>
+        </div>
+
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up" data-category="pre-columbian">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/ao/web-large/DP-23630-001.jpg" alt="Moche Portrait Vessel" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-serif text-base text-white mb-1">Moche Portrait Head Bottle</h3>
+            <p class="text-gold text-xs mb-2">Moche &bull; 5th-6th Century</p>
+            <p class="text-gray-400 text-xs mb-2">Naturalistic portrait vessel depicting an individual with fine detail. The Moche produced some of the most realistic portraiture in the ancient Americas.</p>
+            <p class="text-gold-light text-xs font-semibold">Est. Value: $6,000 - $20,000</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Results -->
+      <div id="no-results" class="hidden text-center py-16">
+        <i class="fas fa-search text-gold/30 text-5xl mb-4"></i>
+        <p class="text-gray-400 text-lg">No artifacts match your search.</p>
+        <p class="text-gray-500 text-sm mt-2">Try a different filter or search term.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-dark-lighter border-t border-gold/20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">Have Something Similar?</h2>
+      <p class="text-gray-400 mb-8">We're actively buying artifacts like these. Get a free appraisal and competitive offer.</p>
+      <a href="/sell.html" class="inline-block bg-gold text-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-light transition">Sell Your Artifact</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-lighter border-t border-gold/20 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="font-serif text-2xl text-gold mb-4">iBuyArtifacts</h3>
+          <p class="text-gray-400 text-sm">Premier buyers of authentic ancient artifacts. Trusted by collectors and estates worldwide.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="/" class="hover:text-gold transition">Home</a></li>
+            <li><a href="/gallery.html" class="hover:text-gold transition">Gallery</a></li>
+            <li><a href="/appraisal.html" class="hover:text-gold transition">Free Appraisal</a></li>
+            <li><a href="/sell.html" class="hover:text-gold transition">Sell Your Artifact</a></li>
+            <li><a href="/news.html" class="hover:text-gold transition">News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><i class="fas fa-envelope text-gold mr-2"></i><a href="mailto:haroldlovessol@gmail.com" class="hover:text-gold transition">haroldlovessol@gmail.com</a></li>
+            <li><i class="fas fa-globe text-gold mr-2"></i><a href="https://haroldcarver.info" target="_blank" class="hover:text-gold transition">haroldcarver.info</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Follow Harold</h4>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://instagram.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/HaroldCarv43889" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.threads.com/@haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Threads"><i class="fab fa-threads"></i></a>
+            <a href="https://bsky.app/profile/haroldcarver.bsky.social" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://linkedin.com/in/harold-carver-142aa63b2" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://pinterest.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://www.youtube.com/@HaroldCarver-m2t" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="flex gap-3 mt-3">
+            <a href="https://ko-fi.com/haroldcarver" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-mug-hot mr-1"></i>Ko-fi</a>
+            <a href="https://haroldsolace.gumroad.com" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-book mr-1"></i>Books</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 iBuyArtifacts. All rights reserved. | <a href="#" class="hover:text-gold">Privacy Policy</a> | <a href="#" class="hover:text-gold">Terms of Service</a></p>
+        <p class="mt-2 text-xs">All artifact images are public domain, courtesy of The Metropolitan Museum of Art Open Access program.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    // Show "no results" message when all cards are hidden
+    const observer = new MutationObserver(() => {
+      const cards = document.querySelectorAll('.artifact-card');
+      const visible = Array.from(cards).filter(c => c.style.display !== 'none');
+      const noResults = document.getElementById('no-results');
+      if (noResults) noResults.classList.toggle('hidden', visible.length > 0);
+    });
+    document.querySelectorAll('.artifact-card').forEach(card => {
+      observer.observe(card, { attributes: true, attributeFilter: ['style'] });
+    });
+  </script>
+</body>
+</html>

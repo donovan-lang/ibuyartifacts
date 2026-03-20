@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Appraisal | iBuyArtifacts</title>
+  <meta name="description" content="Get a free, no-obligation appraisal of your ancient artifact. Our team of experts will evaluate your piece and provide a fair market estimate.">
+  <meta property="og:title" content="Free Appraisal | iBuyArtifacts">
+  <meta property="og:description" content="Submit your artifact details for a professional appraisal. No obligation, completely free.">
+  <link rel="canonical" href="https://ibuyartifacts.com/appraisal.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: { DEFAULT: '#D4AF37', light: '#F4E5A3', dark: '#B8960C' },
+          dark: { DEFAULT: '#111827', lighter: '#1F2937', card: '#1a2332' }
+        },
+        fontFamily: {
+          serif: ['Playfair Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="bg-dark text-gray-200 font-sans">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-gold/20 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="font-serif text-2xl text-gold font-bold tracking-wide">iBuyArtifacts</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gray-300 hover:text-gold transition">Home</a>
+          <a href="/gallery.html" class="nav-link text-gray-300 hover:text-gold transition">Gallery</a>
+          <a href="/appraisal.html" class="nav-link text-gold transition">Appraisal</a>
+          <a href="/news.html" class="nav-link text-gray-300 hover:text-gold transition">News</a>
+          <a href="/sell.html" class="bg-gold text-dark px-5 py-2 rounded-lg font-semibold hover:bg-gold-light transition">Sell Your Artifact</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gold text-2xl" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gold/20">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/" class="block text-gray-300 hover:text-gold py-2">Home</a>
+        <a href="/gallery.html" class="block text-gray-300 hover:text-gold py-2">Gallery</a>
+        <a href="/appraisal.html" class="block text-gold py-2">Appraisal</a>
+        <a href="/news.html" class="block text-gray-300 hover:text-gold py-2">News</a>
+        <a href="/sell.html" class="block bg-gold text-dark px-4 py-2 rounded-lg text-center font-semibold">Sell Your Artifact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 hero-pattern relative">
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl gold-gradient-text mb-4">Free Artifact Appraisal</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">Tell us about your piece and upload photos. Our experts will provide a professional valuation within 48 hours — completely free, no obligation.</p>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-12 bg-dark-lighter border-b border-gold/10">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="fade-in-up">
+          <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-camera text-gold text-xl"></i>
+          </div>
+          <h3 class="text-white font-semibold mb-2">1. Submit Details</h3>
+          <p class="text-gray-400 text-sm">Fill out the form below with artifact details and upload clear photos from multiple angles.</p>
+        </div>
+        <div class="fade-in-up">
+          <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-microscope text-gold text-xl"></i>
+          </div>
+          <h3 class="text-white font-semibold mb-2">2. Expert Review</h3>
+          <p class="text-gray-400 text-sm">Our team of archaeologists and historians will evaluate your piece using provenance research and market comparables.</p>
+        </div>
+        <div class="fade-in-up">
+          <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-file-invoice-dollar text-gold text-xl"></i>
+          </div>
+          <h3 class="text-white font-semibold mb-2">3. Receive Valuation</h3>
+          <p class="text-gray-400 text-sm">Get a detailed appraisal report with estimated market value, historical context, and a purchase offer if you wish to sell.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appraisal Form -->
+  <section class="py-16" id="appraisal-form">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- Step Indicators -->
+      <div class="flex items-center justify-center mb-12">
+        <div class="step-indicator active"><span>1</span></div>
+        <div class="step-line mx-2"></div>
+        <div class="step-indicator"><span>2</span></div>
+        <div class="step-line mx-2"></div>
+        <div class="step-indicator"><span>3</span></div>
+      </div>
+
+      <form action="https://formsubmit.co/donovan@huntsvillrealty.com" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New Appraisal Request - iBuyArtifacts">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://ibuyartifacts.com/appraisal.html?submitted=true">
+        <input type="text" name="_honey" style="display:none">
+
+        <!-- Step 1: Artifact Details -->
+        <div class="form-step">
+          <h2 class="font-serif text-2xl text-white mb-6">Artifact Details</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">Artifact Type *</label>
+              <select name="artifact_type" required class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200">
+                <option value="">Select type...</option>
+                <option value="coin">Coin / Currency</option>
+                <option value="pottery">Pottery / Ceramics</option>
+                <option value="jewelry">Jewelry / Adornment</option>
+                <option value="statue">Statue / Figurine</option>
+                <option value="weapon">Weapon / Tool</option>
+                <option value="tablet">Tablet / Inscription</option>
+                <option value="seal">Seal / Stamp</option>
+                <option value="vessel">Vessel / Container</option>
+                <option value="textile">Textile / Fabric</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">Civilization / Origin *</label>
+              <select name="civilization" required class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200">
+                <option value="">Select origin...</option>
+                <option value="egyptian">Egyptian</option>
+                <option value="greek">Greek</option>
+                <option value="roman">Roman</option>
+                <option value="mesopotamian">Mesopotamian</option>
+                <option value="chinese">Chinese</option>
+                <option value="japanese">Japanese</option>
+                <option value="indian">Indian / South Asian</option>
+                <option value="persian">Persian</option>
+                <option value="maya">Maya / Aztec</option>
+                <option value="inca">Inca / Andean</option>
+                <option value="viking">Viking / Norse</option>
+                <option value="celtic">Celtic</option>
+                <option value="unknown">Unknown / Uncertain</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Estimated Age / Period</label>
+            <input type="text" name="estimated_age" placeholder="e.g., 3rd Century BC, Tang Dynasty, Bronze Age" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500">
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Material</label>
+            <input type="text" name="material" placeholder="e.g., Bronze, Terracotta, Gold, Marble, Jade" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500">
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">Approximate Dimensions</label>
+              <input type="text" name="dimensions" placeholder="e.g., 6 inches tall, 3 cm diameter" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">Condition</label>
+              <select name="condition" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200">
+                <option value="">Select condition...</option>
+                <option value="excellent">Excellent - Near perfect</option>
+                <option value="good">Good - Minor wear only</option>
+                <option value="fair">Fair - Some damage/repair</option>
+                <option value="poor">Poor - Significant damage</option>
+                <option value="fragment">Fragment / Partial piece</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Description & Provenance</label>
+            <textarea name="description" rows="4" placeholder="Describe the artifact, how you acquired it, any known history, previous appraisals, inscriptions, etc." class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500"></textarea>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="button" class="next-step bg-gold text-dark px-8 py-3 rounded-lg font-semibold hover:bg-gold-light transition">
+              Next: Upload Photos <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Photos -->
+        <div class="form-step hidden">
+          <h2 class="font-serif text-2xl text-white mb-6">Upload Photos</h2>
+          <p class="text-gray-400 text-sm mb-6">Clear, well-lit photos significantly improve our appraisal accuracy. Include front, back, any details, marks, or damage.</p>
+
+          <div class="space-y-6">
+            <div class="border-2 border-dashed border-gray-700 rounded-lg p-8 text-center hover:border-gold/50 transition">
+              <i class="fas fa-cloud-upload-alt text-gold text-4xl mb-4"></i>
+              <p class="text-gray-300 mb-2">Upload up to 5 photos</p>
+              <p class="text-gray-500 text-xs mb-4">JPG, PNG, or HEIC — max 10 MB each</p>
+              <input type="file" name="photos" accept="image/*" multiple class="photo-upload hidden" id="photo-input" data-preview="photo-preview">
+              <label for="photo-input" class="inline-block bg-gold/10 border border-gold/30 text-gold px-6 py-2 rounded-lg cursor-pointer hover:bg-gold hover:text-dark transition font-medium">
+                <i class="fas fa-camera mr-2"></i>Choose Photos
+              </label>
+            </div>
+
+            <div id="photo-preview" class="flex flex-wrap gap-3"></div>
+
+            <div class="bg-dark-card rounded-lg p-4 border border-gray-800">
+              <h4 class="text-white text-sm font-semibold mb-2"><i class="fas fa-lightbulb text-gold mr-2"></i>Photo Tips</h4>
+              <ul class="text-gray-400 text-xs space-y-1">
+                <li>&bull; Use natural lighting or a bright, even light source</li>
+                <li>&bull; Include a ruler or coin for scale reference</li>
+                <li>&bull; Photograph any inscriptions, marks, or stamps closely</li>
+                <li>&bull; Show any damage, repairs, or wear clearly</li>
+                <li>&bull; Include the base or underside if accessible</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-6">
+            <button type="button" class="prev-step text-gray-400 hover:text-white px-6 py-3 transition">
+              <i class="fas fa-arrow-left mr-2"></i> Back
+            </button>
+            <button type="button" class="next-step bg-gold text-dark px-8 py-3 rounded-lg font-semibold hover:bg-gold-light transition">
+              Next: Contact Info <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Contact Info -->
+        <div class="form-step hidden">
+          <h2 class="font-serif text-2xl text-white mb-6">Your Contact Information</h2>
+          <p class="text-gray-400 text-sm mb-6">All information is kept strictly confidential. We'll only use it to deliver your appraisal.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">First Name *</label>
+              <input type="text" name="first_name" required class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200" placeholder="John">
+            </div>
+            <div>
+              <label class="block text-sm text-gray-300 mb-1">Last Name *</label>
+              <input type="text" name="last_name" required class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200" placeholder="Smith">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Email Address *</label>
+            <input type="email" name="email" required class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200" placeholder="john@example.com">
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Phone Number</label>
+            <input type="tel" name="phone" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200" placeholder="(555) 123-4567">
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Preferred Contact Method</label>
+            <div class="flex gap-4 mt-2">
+              <label class="flex items-center gap-2 text-gray-300 text-sm cursor-pointer">
+                <input type="radio" name="contact_method" value="email" checked class="accent-gold"> Email
+              </label>
+              <label class="flex items-center gap-2 text-gray-300 text-sm cursor-pointer">
+                <input type="radio" name="contact_method" value="phone" class="accent-gold"> Phone
+              </label>
+              <label class="flex items-center gap-2 text-gray-300 text-sm cursor-pointer">
+                <input type="radio" name="contact_method" value="either" class="accent-gold"> Either
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-gray-300 mb-1">Additional Notes</label>
+            <textarea name="notes" rows="3" class="w-full bg-dark-card border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500" placeholder="Any other details, timeline preferences, or questions..."></textarea>
+          </div>
+
+          <div class="bg-dark-card rounded-lg p-4 border border-gold/20 mt-4">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" required class="mt-1 accent-gold">
+              <span class="text-gray-400 text-sm">I confirm that I am the legal owner of this artifact (or authorized to act on behalf of the owner) and consent to iBuyArtifacts processing my information for appraisal purposes. <a href="#" class="text-gold hover:text-gold-light">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <div class="flex justify-between mt-6">
+            <button type="button" class="prev-step text-gray-400 hover:text-white px-6 py-3 transition">
+              <i class="fas fa-arrow-left mr-2"></i> Back
+            </button>
+            <button type="submit" class="bg-gold text-dark px-8 py-3 rounded-lg font-semibold hover:bg-gold-light transition pulse-gold">
+              <i class="fas fa-paper-plane mr-2"></i> Submit for Appraisal
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-dark-lighter">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="font-serif text-3xl text-white text-center mb-10 fade-in-up">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="bg-dark-card rounded-lg border border-gray-800 group fade-in-up">
+          <summary class="flex justify-between items-center p-5 cursor-pointer text-white font-medium">
+            How long does the appraisal take?
+            <i class="fas fa-chevron-down text-gold text-sm transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-5 pb-5 text-gray-400 text-sm">Most appraisals are completed within 48 hours. Complex pieces or those requiring additional research may take up to 5 business days. We'll keep you informed of any delays.</div>
+        </details>
+        <details class="bg-dark-card rounded-lg border border-gray-800 group fade-in-up">
+          <summary class="flex justify-between items-center p-5 cursor-pointer text-white font-medium">
+            Is the appraisal really free?
+            <i class="fas fa-chevron-down text-gold text-sm transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-5 pb-5 text-gray-400 text-sm">Yes, completely free with no obligation. We provide appraisals as a service because we're genuinely interested in acquiring quality artifacts. If you choose to sell, that's a separate transaction entirely.</div>
+        </details>
+        <details class="bg-dark-card rounded-lg border border-gray-800 group fade-in-up">
+          <summary class="flex justify-between items-center p-5 cursor-pointer text-white font-medium">
+            What happens after I receive my appraisal?
+            <i class="fas fa-chevron-down text-gold text-sm transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-5 pb-5 text-gray-400 text-sm">Along with the valuation, you'll receive a purchase offer if we're interested in the piece. You're free to accept, negotiate, or decline — there's zero pressure. The appraisal is yours to keep regardless.</div>
+        </details>
+        <details class="bg-dark-card rounded-lg border border-gray-800 group fade-in-up">
+          <summary class="flex justify-between items-center p-5 cursor-pointer text-white font-medium">
+            Can I get a physical in-person appraisal?
+            <i class="fas fa-chevron-down text-gold text-sm transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-5 pb-5 text-gray-400 text-sm">For high-value pieces or collections, we can arrange an in-person evaluation. We work with accredited appraisers across the US and can travel to your location for significant collections.</div>
+        </details>
+        <details class="bg-dark-card rounded-lg border border-gray-800 group fade-in-up">
+          <summary class="flex justify-between items-center p-5 cursor-pointer text-white font-medium">
+            Is my information kept confidential?
+            <i class="fas fa-chevron-down text-gold text-sm transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-5 pb-5 text-gray-400 text-sm">Absolutely. We take discretion seriously. Your personal information, artifact details, and transaction records are kept strictly confidential and never shared with third parties.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-lighter border-t border-gold/20 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="font-serif text-2xl text-gold mb-4">iBuyArtifacts</h3>
+          <p class="text-gray-400 text-sm">Premier buyers of authentic ancient artifacts. Trusted by collectors and estates worldwide.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="/" class="hover:text-gold transition">Home</a></li>
+            <li><a href="/gallery.html" class="hover:text-gold transition">Gallery</a></li>
+            <li><a href="/appraisal.html" class="hover:text-gold transition">Free Appraisal</a></li>
+            <li><a href="/sell.html" class="hover:text-gold transition">Sell Your Artifact</a></li>
+            <li><a href="/news.html" class="hover:text-gold transition">News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><i class="fas fa-envelope text-gold mr-2"></i><a href="mailto:haroldlovessol@gmail.com" class="hover:text-gold transition">haroldlovessol@gmail.com</a></li>
+            <li><i class="fas fa-globe text-gold mr-2"></i><a href="https://haroldcarver.info" target="_blank" class="hover:text-gold transition">haroldcarver.info</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Follow Harold</h4>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://instagram.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/HaroldCarv43889" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.threads.com/@haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Threads"><i class="fab fa-threads"></i></a>
+            <a href="https://bsky.app/profile/haroldcarver.bsky.social" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://linkedin.com/in/harold-carver-142aa63b2" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://pinterest.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://www.youtube.com/@HaroldCarver-m2t" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="flex gap-3 mt-3">
+            <a href="https://ko-fi.com/haroldcarver" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-mug-hot mr-1"></i>Ko-fi</a>
+            <a href="https://haroldsolace.gumroad.com" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-book mr-1"></i>Books</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 iBuyArtifacts. All rights reserved. | <a href="#" class="hover:text-gold">Privacy Policy</a> | <a href="#" class="hover:text-gold">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    // Check for submission success
+    if (window.location.search.includes('submitted=true')) {
+      const form = document.querySelector('form');
+      form.innerHTML = `
+        <div class="text-center py-12">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-check text-gold text-3xl"></i>
+          </div>
+          <h2 class="font-serif text-3xl text-white mb-4">Appraisal Request Received!</h2>
+          <p class="text-gray-400 mb-6 max-w-md mx-auto">Thank you for your submission. Our team will review your artifact and provide a detailed appraisal within 48 hours.</p>
+          <a href="/" class="text-gold hover:text-gold-light font-medium">&larr; Return to Home</a>
+        </div>
+      `;
+      document.querySelectorAll('.step-indicator').forEach(ind => {
+        ind.classList.add('completed');
+        ind.classList.remove('active');
+      });
+      document.querySelectorAll('.step-line').forEach(line => line.classList.add('completed'));
+    }
+  </script>
+</body>
+</html>

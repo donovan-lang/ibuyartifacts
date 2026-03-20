@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archaeological News | iBuyArtifacts</title>
+  <meta name="description" content="Stay up to date with the latest archaeological discoveries, excavations, and research from around the world.">
+  <meta property="og:title" content="Archaeological News | iBuyArtifacts">
+  <meta property="og:description" content="The latest discoveries and research in archaeology and ancient history.">
+  <link rel="canonical" href="https://ibuyartifacts.com/news.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: { DEFAULT: '#D4AF37', light: '#F4E5A3', dark: '#B8960C' },
+          dark: { DEFAULT: '#111827', lighter: '#1F2937', card: '#1a2332' }
+        },
+        fontFamily: {
+          serif: ['Playfair Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="bg-dark text-gray-200 font-sans">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-gold/20 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="font-serif text-2xl text-gold font-bold tracking-wide">iBuyArtifacts</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gray-300 hover:text-gold transition">Home</a>
+          <a href="/gallery.html" class="nav-link text-gray-300 hover:text-gold transition">Gallery</a>
+          <a href="/appraisal.html" class="nav-link text-gray-300 hover:text-gold transition">Appraisal</a>
+          <a href="/news.html" class="nav-link text-gold transition">News</a>
+          <a href="/sell.html" class="bg-gold text-dark px-5 py-2 rounded-lg font-semibold hover:bg-gold-light transition">Sell Your Artifact</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gold text-2xl" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gold/20">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/" class="block text-gray-300 hover:text-gold py-2">Home</a>
+        <a href="/gallery.html" class="block text-gray-300 hover:text-gold py-2">Gallery</a>
+        <a href="/appraisal.html" class="block text-gray-300 hover:text-gold py-2">Appraisal</a>
+        <a href="/news.html" class="block text-gold py-2">News</a>
+        <a href="/sell.html" class="block bg-gold text-dark px-4 py-2 rounded-lg text-center font-semibold">Sell Your Artifact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 hero-pattern relative">
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl gold-gradient-text mb-4">Archaeological News</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">The latest discoveries, excavations, and breakthroughs from the world of archaeology and ancient history.</p>
+    </div>
+  </section>
+
+  <!-- Featured Story -->
+  <section class="py-12 bg-dark-lighter border-b border-gold/10">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="bg-dark-card rounded-lg border border-gold/30 overflow-hidden md:flex fade-in-up">
+        <div class="md:w-2/5 bg-dark-lighter flex items-center justify-center p-8">
+          <i class="fas fa-landmark text-gold/20 text-8xl"></i>
+        </div>
+        <div class="md:w-3/5 p-8">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Featured Story</span>
+          <h2 class="font-serif text-2xl text-white mt-2 mb-3">Massive Roman Villa Complex Found Beneath London</h2>
+          <p class="text-gray-400 text-sm mb-4">Construction workers uncovered an extensive Roman villa dating to the 2nd century AD during excavation for a new office building in the City of London. The complex includes intact mosaic floors depicting mythological scenes, a sophisticated hypocaust heating system, and a private bathhouse — suggesting the owner was among the wealthiest residents of Roman Londinium.</p>
+          <p class="text-gray-400 text-sm mb-4">Archaeologists from the Museum of London Archaeology (MOLA) describe it as "the most significant Roman discovery in the capital in over a decade." Hundreds of artifacts have been recovered, including pottery, coins, and personal items that paint a vivid picture of elite Roman-British life.</p>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-500">February 2026</span>
+            <a href="https://www.archaeology.org" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Read at Archaeology Magazine &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Grid -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Excavation</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">3,200-Year-Old Bronze Age Sword Found Intact in Bavaria</h3>
+          <p class="text-gray-400 text-sm mb-3">A remarkably preserved bronze sword from the Urnfield period was recovered from a riverbed near Regensburg, still showing traces of its original leather grip. Researchers believe it was deposited as a votive offering.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.livescience.com/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Live Science &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Technology</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">LiDAR Reveals Hidden Maya Megalopolis in Guatemala</h3>
+          <p class="text-gray-400 text-sm mb-3">Aerial laser scanning uncovered more than 1,000 previously unknown structures including pyramids, causeways, and reservoirs beneath the Peten jungle canopy. The discovery rewrites estimates of ancient Maya population density.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>February 2026</span>
+            <a href="https://www.nationalgeographic.com/history" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">National Geographic &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Egypt</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Archaeologists Unearth 4,500-Year-Old Solar Boat Near Giza</h3>
+          <p class="text-gray-400 text-sm mb-3">A second ceremonial boat belonging to Pharaoh Khufu has been fully extracted from a sealed pit near the Great Pyramid. The 141-foot cedar vessel will join its sister ship at the Grand Egyptian Museum.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.theguardian.com/science/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">The Guardian &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Underwater</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">2,000 Roman Coins Recovered from Mediterranean Shipwreck</h3>
+          <p class="text-gray-400 text-sm mb-3">Divers off the coast of Sardinia recovered a trove of gold and silver coins from a 1st-century trading vessel, alongside amphorae and bronze fittings. The wreck offers clues to Roman maritime trade routes.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>December 2025</span>
+            <a href="https://www.smithsonianmag.com/history" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Smithsonian &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Research</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Viking-Age Silver Hoard Discovered by Detectorist in Norfolk</h3>
+          <p class="text-gray-400 text-sm mb-3">An amateur metal detectorist unearthed a collection of 87 silver coins and five arm rings dating to the reign of Cnut the Great. The find was declared treasure by the British Museum's Portable Antiquities Scheme.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.bbc.com/news/science-environment" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">BBC News &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Discovery</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Intact Etruscan Tomb Uncovered Near Tarquinia, Italy</h3>
+          <p class="text-gray-400 text-sm mb-3">A sealed Etruscan chamber tomb dating to the 4th century BC was discovered during road construction. Inside, archaeologists found frescoed walls, gold jewelry, bronze mirrors, and painted ceramic vessels.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>February 2026</span>
+            <a href="https://www.archaeology.org" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Archaeology Magazine &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Asia</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">5,000-Year-Old City Ruins Found Along Indus River in Pakistan</h3>
+          <p class="text-gray-400 text-sm mb-3">New excavations reveal a previously unknown Indus Valley Civilization settlement with advanced drainage systems, standardized brick construction, and evidence of long-distance trade with Mesopotamia.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.livescience.com/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Live Science &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Americas</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Oldest Known Chocolate Residue Found on Olmec Pottery</h3>
+          <p class="text-gray-400 text-sm mb-3">Chemical analysis of pottery sherds from the Olmec site of San Lorenzo has identified cacao residue dating to 1900 BC — pushing back the earliest known use of chocolate by nearly 500 years.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>December 2025</span>
+            <a href="https://www.nationalgeographic.com/history" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">National Geographic &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Greece</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Mycenaean Palace Floor Plan Mapped Using Ground Radar</h3>
+          <p class="text-gray-400 text-sm mb-3">Non-invasive ground-penetrating radar at a hilltop in the Peloponnese has revealed the complete floor plan of a Late Bronze Age palace, including a megaron, storerooms, and a possible throne room.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.archaeology.org" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Archaeology Magazine &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Market</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Ancient Gold Torque Sells for Record $4.2 Million at Christie's</h3>
+          <p class="text-gray-400 text-sm mb-3">A Celtic gold torque from the 1st century BC, found in a field in Essex in 1968, set a new auction record for ancient jewelry. The piece weighs over 2 pounds and features intricate terminal decoration.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>February 2026</span>
+            <a href="https://www.christies.com" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Christie's &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Africa</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Ancient Nubian Temple Discovered Beneath Sudan Sand Dunes</h3>
+          <p class="text-gray-400 text-sm mb-3">Satellite imagery led archaeologists to a buried temple complex of the Kingdom of Kush, dating to 700 BC. Preliminary excavation revealed colossal ram-headed sphinxes and hieroglyphic inscriptions.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>December 2025</span>
+            <a href="https://www.smithsonianmag.com/history" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Smithsonian &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Repatriation</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Italy Returns 200 Looted Artifacts to Greece in Historic Agreement</h3>
+          <p class="text-gray-400 text-sm mb-3">In one of the largest repatriation agreements between European nations, Italy has returned 200 artifacts seized from trafficking networks, including Archaic bronzes, Hellenistic silver, and Attic pottery.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.theguardian.com/science/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">The Guardian &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Science</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">DNA Analysis Reveals Silk Road Merchants Had Diverse Origins</h3>
+          <p class="text-gray-400 text-sm mb-3">Ancient DNA extracted from burials at a Silk Road caravanserai in Uzbekistan shows individuals with ancestry from China, Persia, India, and the Mediterranean — confirming the route's role as a genetic melting pot.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>February 2026</span>
+            <a href="https://www.nature.com/articles" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Nature &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">China</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Terracotta Army Pit Reveals 20 New Warriors and Bronze Chariot</h3>
+          <p class="text-gray-400 text-sm mb-3">Continued excavation of Pit 2 at Emperor Qin Shi Huang's mausoleum has revealed 20 previously unexcavated terracotta warriors in unique poses, along with a miniature bronze chariot with detailed horse fittings.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>December 2025</span>
+            <a href="https://www.bbc.com/news/science-environment" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">BBC News &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Mesopotamia</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Lost Sumerian City Emerges from Dried Iraqi Marshlands</h3>
+          <p class="text-gray-400 text-sm mb-3">Drought conditions in southern Iraq have exposed the ruins of a Sumerian city dating to 2500 BC. The site includes a ziggurat foundation, cuneiform archives, and a harbor suggesting it was a major trading center.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>January 2026</span>
+            <a href="https://www.livescience.com/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Live Science &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Conservation</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">AI Reconstructs Damaged Pompeii Frescoes from Fragments</h3>
+          <p class="text-gray-400 text-sm mb-3">A machine learning system developed at Oxford has successfully reassembled thousands of fresco fragments from Pompeii's House of the Faun, revealing scenes that haven't been seen since 79 AD.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>February 2026</span>
+            <a href="https://www.nature.com/articles" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Nature &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-dark-lighter border-t border-gold/20">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <h2 class="font-serif text-3xl text-white mb-4 fade-in-up">Stay Updated</h2>
+      <p class="text-gray-400 mb-8 fade-in-up">Get the latest archaeological discoveries and market insights delivered to your inbox.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto fade-in-up">
+        <input type="email" placeholder="your@email.com" class="flex-1 bg-dark border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500">
+        <button type="button" class="bg-gold text-dark px-6 py-3 rounded-lg font-semibold hover:bg-gold-light transition whitespace-nowrap">Subscribe</button>
+      </form>
+      <p class="text-gray-600 text-xs mt-3">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-lighter border-t border-gold/20 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="font-serif text-2xl text-gold mb-4">iBuyArtifacts</h3>
+          <p class="text-gray-400 text-sm">Premier buyers of authentic ancient artifacts. Trusted by collectors and estates worldwide.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="/" class="hover:text-gold transition">Home</a></li>
+            <li><a href="/gallery.html" class="hover:text-gold transition">Gallery</a></li>
+            <li><a href="/appraisal.html" class="hover:text-gold transition">Free Appraisal</a></li>
+            <li><a href="/sell.html" class="hover:text-gold transition">Sell Your Artifact</a></li>
+            <li><a href="/news.html" class="hover:text-gold transition">News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><i class="fas fa-envelope text-gold mr-2"></i><a href="mailto:haroldlovessol@gmail.com" class="hover:text-gold transition">haroldlovessol@gmail.com</a></li>
+            <li><i class="fas fa-globe text-gold mr-2"></i><a href="https://haroldcarver.info" target="_blank" class="hover:text-gold transition">haroldcarver.info</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Follow Harold</h4>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://instagram.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/HaroldCarv43889" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.threads.com/@haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Threads"><i class="fab fa-threads"></i></a>
+            <a href="https://bsky.app/profile/haroldcarver.bsky.social" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://linkedin.com/in/harold-carver-142aa63b2" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://pinterest.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://www.youtube.com/@HaroldCarver-m2t" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="flex gap-3 mt-3">
+            <a href="https://ko-fi.com/haroldcarver" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-mug-hot mr-1"></i>Ko-fi</a>
+            <a href="https://haroldsolace.gumroad.com" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-book mr-1"></i>Books</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 iBuyArtifacts. All rights reserved. | <a href="#" class="hover:text-gold">Privacy Policy</a> | <a href="#" class="hover:text-gold">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

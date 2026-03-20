@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iBuyArtifacts | Buy & Sell Ancient Artifacts</title>
+  <meta name="description" content="Premier buyers of authentic ancient artifacts. Professional appraisals, confidential transactions, and top-dollar offers for coins, pottery, statues, jewelry, and more.">
+  <meta property="og:title" content="iBuyArtifacts | Buy & Sell Ancient Artifacts">
+  <meta property="og:description" content="Discover, appraise, and sell your ancient treasures. Trusted by collectors worldwide.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ibuyartifacts.com">
+  <link rel="canonical" href="https://ibuyartifacts.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: { DEFAULT: '#D4AF37', light: '#F4E5A3', dark: '#B8960C' },
+          dark: { DEFAULT: '#111827', lighter: '#1F2937', card: '#1a2332' }
+        },
+        fontFamily: {
+          serif: ['Playfair Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "iBuyArtifacts",
+    "url": "https://ibuyartifacts.com",
+    "description": "Premier buyers of authentic ancient artifacts. Professional appraisals and top-dollar offers.",
+    "contactPoint": { "@type": "ContactPoint", "email": "haroldlovessol@gmail.com", "contactType": "customer service" }
+  }
+  </script>
+</head>
+<body class="bg-dark text-gray-200 font-sans">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 bg-dark/95 backdrop-blur-md border-b border-gold/20 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="font-serif text-2xl text-gold font-bold tracking-wide">iBuyArtifacts</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gold transition">Home</a>
+          <a href="/gallery.html" class="nav-link text-gray-300 hover:text-gold transition">Gallery</a>
+          <a href="/appraisal.html" class="nav-link text-gray-300 hover:text-gold transition">Appraisal</a>
+          <a href="/news.html" class="nav-link text-gray-300 hover:text-gold transition">News</a>
+          <a href="/sell.html" class="bg-gold text-dark px-5 py-2 rounded-lg font-semibold hover:bg-gold-light transition">Sell Your Artifact</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gold text-2xl" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gold/20">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/" class="block text-gold py-2">Home</a>
+        <a href="/gallery.html" class="block text-gray-300 hover:text-gold py-2">Gallery</a>
+        <a href="/appraisal.html" class="block text-gray-300 hover:text-gold py-2">Appraisal</a>
+        <a href="/news.html" class="block text-gray-300 hover:text-gold py-2">News</a>
+        <a href="/sell.html" class="block bg-gold text-dark px-4 py-2 rounded-lg text-center font-semibold">Sell Your Artifact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center hero-pattern">
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center pt-20">
+      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl gold-gradient-text mb-6 leading-tight">iBuyArtifacts</h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto">Discover &bull; Appraise &bull; Sell Your Ancient Treasures</p>
+      <p class="text-gray-400 mb-10 max-w-xl mx-auto">We purchase authentic ancient artifacts from private collections, estates, and individual sellers. Professional appraisals. Fair prices. Complete confidentiality.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/sell.html" class="bg-gold text-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-light transition pulse-gold">Sell Your Artifact</a>
+        <a href="/appraisal.html" class="border-2 border-gold text-gold px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold hover:text-dark transition">Free Appraisal</a>
+      </div>
+      <div class="mt-16 animate-bounce text-gold/50">
+        <i class="fas fa-chevron-down text-2xl"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals -->
+  <section class="bg-dark-lighter py-8 border-y border-gold/10">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="flex flex-col items-center gap-2">
+        <i class="fas fa-globe text-gold text-2xl"></i>
+        <span class="text-sm text-gray-300 font-medium">Trusted Worldwide</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <i class="fas fa-lock text-gold text-2xl"></i>
+        <span class="text-sm text-gray-300 font-medium">100% Confidential</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <i class="fas fa-certificate text-gold text-2xl"></i>
+        <span class="text-sm text-gray-300 font-medium">Expert Appraisals</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <i class="fas fa-handshake text-gold text-2xl"></i>
+        <span class="text-sm text-gray-300 font-medium">Fair Market Prices</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-white mb-4 fade-in-up">Latest Archaeological Discoveries</h2>
+        <div class="section-divider mb-4"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">Stay informed with the latest findings from excavations and research around the world.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Discovery</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Massive Roman Villa Complex Found Beneath London</h3>
+          <p class="text-gray-400 text-sm mb-3">Construction workers uncovered an extensive Roman villa dating to the 2nd century AD, complete with intact mosaic floors and a hypocaust heating system.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>Feb 2026</span>
+            <a href="https://www.archaeology.org" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Archaeology Magazine &rarr;</a>
+          </div>
+        </div>
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Excavation</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">3,200-Year-Old Bronze Age Sword Found Intact in Bavaria</h3>
+          <p class="text-gray-400 text-sm mb-3">A remarkably preserved bronze sword from the Urnfield period was recovered from a riverbed near Regensburg, still showing traces of its original leather grip.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>Jan 2026</span>
+            <a href="https://www.livescience.com/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Live Science &rarr;</a>
+          </div>
+        </div>
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Technology</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">LiDAR Reveals Hidden Maya Megalopolis in Guatemala</h3>
+          <p class="text-gray-400 text-sm mb-3">Aerial laser scanning uncovered more than 1,000 previously unknown structures including pyramids, causeways, and reservoirs beneath the Peten jungle canopy.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>Feb 2026</span>
+            <a href="https://www.nationalgeographic.com/history" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">National Geographic &rarr;</a>
+          </div>
+        </div>
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Egypt</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Archaeologists Unearth 4,500-Year-Old Solar Boat Near Giza</h3>
+          <p class="text-gray-400 text-sm mb-3">A second ceremonial boat belonging to Pharaoh Khufu has been fully extracted from a sealed pit near the Great Pyramid, joining its sister vessel in the Grand Egyptian Museum.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>Jan 2026</span>
+            <a href="https://www.theguardian.com/science/archaeology" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">The Guardian &rarr;</a>
+          </div>
+        </div>
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Underwater</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">2,000 Roman Coins Recovered from Mediterranean Shipwreck</h3>
+          <p class="text-gray-400 text-sm mb-3">Divers off the coast of Sardinia recovered a trove of gold and silver coins from a 1st-century trading vessel, alongside amphorae and bronze fittings.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>Dec 2025</span>
+            <a href="https://www.smithsonianmag.com/history" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">Smithsonian &rarr;</a>
+          </div>
+        </div>
+        <div class="bg-dark-card rounded-lg p-6 border border-gray-800 hover:border-gold/30 transition fade-in-up">
+          <span class="text-gold text-xs uppercase tracking-wider font-semibold">Research</span>
+          <h3 class="font-serif text-lg text-white mt-2 mb-2">Viking-Age Silver Hoard Discovered by Detectorist in Norfolk</h3>
+          <p class="text-gray-400 text-sm mb-3">An amateur metal detectorist unearthed a collection of 87 silver coins and five arm rings dating to the reign of Cnut the Great, declared treasure by the British Museum.</p>
+          <div class="flex justify-between items-center text-xs text-gray-500">
+            <span>Jan 2026</span>
+            <a href="https://www.bbc.com/news/science-environment" target="_blank" rel="noopener" class="text-gold hover:text-gold-light">BBC News &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="/news.html" class="text-gold hover:text-gold-light font-medium transition">View All News &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Artifacts -->
+  <section class="py-20 bg-dark-lighter">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-white mb-4 fade-in-up">Featured Artifacts</h2>
+        <div class="section-divider mb-4"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">A glimpse of the types of pieces we acquire. Browse our full gallery for more.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="featured-artifacts">
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/eg/web-large/DT227703.jpg" alt="Canopic Jar with Queen Lid" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-1">Canopic Jar with Royal Lid</h3>
+            <p class="text-gold text-sm mb-2">Egyptian &bull; New Kingdom, ca. 1349-1330 BC</p>
+            <p class="text-gray-400 text-sm mb-3">Travertine canopic jar with a lid depicting a queen. Crafted from Egyptian alabaster with blue glass and obsidian inlays.</p>
+            <p class="text-gold-light text-sm font-semibold mb-3">Est. Value: $15,000 - $45,000</p>
+            <a href="/sell.html" class="text-gold text-sm hover:text-gold-light transition">Selling something similar? &rarr;</a>
+          </div>
+        </div>
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/LC-08_170_75a.jpg" alt="Silver Denarius of Postumius Albinus" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-1">Silver Denarius</h3>
+            <p class="text-gold text-sm mb-2">Roman &bull; Late Republican, ca. 96 BC</p>
+            <p class="text-gray-400 text-sm mb-3">Republican silver denarius of Postumius Albinus. Well-struck portrait with legible legends and excellent metal quality.</p>
+            <p class="text-gold-light text-sm font-semibold mb-3">Est. Value: $300 - $1,200</p>
+            <a href="/sell.html" class="text-gold text-sm hover:text-gold-light transition">Selling something similar? &rarr;</a>
+          </div>
+        </div>
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/gr/web-large/DP116936.jpg" alt="Attic Black-Figure Amphora" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-1">Attic Black-Figure Amphora</h3>
+            <p class="text-gold text-sm mb-2">Greek &bull; Archaic, ca. 530 BC</p>
+            <p class="text-gray-400 text-sm mb-3">Terracotta amphora with black-figure decoration. Standing over 22 inches tall, a remarkable example of Attic ceramic artistry.</p>
+            <p class="text-gold-light text-sm font-semibold mb-3">Est. Value: $8,000 - $25,000</p>
+            <a href="/sell.html" class="text-gold text-sm hover:text-gold-light transition">Selling something similar? &rarr;</a>
+          </div>
+        </div>
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/an/web-large/DT860.jpg" alt="Akkadian Cylinder Seal" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-1">Akkadian Cylinder Seal</h3>
+            <p class="text-gold text-sm mb-2">Mesopotamian &bull; ca. 2250-2150 BC</p>
+            <p class="text-gray-400 text-sm mb-3">Carved chert cylinder seal depicting a hunting scene. Used to roll impressions onto clay tablets as an official seal of authority.</p>
+            <p class="text-gold-light text-sm font-semibold mb-3">Est. Value: $2,000 - $7,000</p>
+            <a href="/sell.html" class="text-gold text-sm hover:text-gold-light transition">Selling something similar? &rarr;</a>
+          </div>
+        </div>
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/as/web-large/DP-42381-001.jpg" alt="Tang Dynasty Horse" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-1">Glazed Ceramic Horse</h3>
+            <p class="text-gold text-sm mb-2">Chinese &bull; Tang Dynasty, 8th Century</p>
+            <p class="text-gray-400 text-sm mb-3">Monumental earthenware horse with brown glazes. Standing 27 inches tall, a remarkable example of Tang dynasty tomb art.</p>
+            <p class="text-gold-light text-sm font-semibold mb-3">Est. Value: $5,000 - $20,000</p>
+            <a href="/sell.html" class="text-gold text-sm hover:text-gold-light transition">Selling something similar? &rarr;</a>
+          </div>
+        </div>
+        <div class="artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 fade-in-up">
+          <div class="img-zoom aspect-[4/3] bg-dark-lighter">
+            <img src="https://images.metmuseum.org/CRDImages/ao/web-large/DP-23468-001.jpg" alt="Maya Whistling Vessel" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-1">Maya Whistling Vessel</h3>
+            <p class="text-gold text-sm mb-2">Pre-Columbian &bull; 400-500 CE</p>
+            <p class="text-gray-400 text-sm mb-3">Ceramic whistling vessel crafted by Maya artisans. When liquid is poured, air displacement produces a distinctive whistling sound.</p>
+            <p class="text-gold-light text-sm font-semibold mb-3">Est. Value: $4,000 - $15,000</p>
+            <a href="/sell.html" class="text-gold text-sm hover:text-gold-light transition">Selling something similar? &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="/gallery.html" class="inline-block bg-gold/10 border border-gold/30 text-gold px-8 py-3 rounded-lg font-medium hover:bg-gold hover:text-dark transition">View Full Gallery &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+
+  <!-- Meet Our Expert -->
+  <section class="py-20 border-t border-gold/20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-white mb-4 fade-in-up">Meet Our Expert</h2>
+        <div class="section-divider mb-4"></div>
+      </div>
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 fade-in-up">
+        <div class="w-48 h-48 rounded-full overflow-hidden border-2 border-gold/40 flex-shrink-0">
+          <img src="https://haroldcarver.info/images/profile-photo.png" alt="Harold Carver" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <h3 class="font-serif text-2xl text-gold mb-2">Harold Carver</h3>
+          <p class="text-gray-300 text-sm uppercase tracking-wider mb-4">Author &bull; Historian &bull; Lead Appraiser</p>
+          <p class="text-gray-400 mb-4">Harold Carver is an author and lifelong student of ancient history with over 20 years of research across 14 countries. His expertise spans Mesopotamian antiquities, Egyptian artifacts, Greek and Roman pieces, and Bronze Age collections. He has authored six books on archaeological discoveries and brings the same meticulous eye to every appraisal.</p>
+          <p class="text-gray-400 mb-4">&ldquo;Every artifact tells a story. My job is to make sure that story is authentic, properly valued, and finds the right home.&rdquo;</p>
+          <a href="https://haroldcarver.info" target="_blank" class="text-gold hover:text-gold-light font-medium transition">Read more about Harold &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-white mb-4 fade-in-up">Why Collectors Trust Us</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center fade-in-up">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-microscope text-gold text-2xl"></i>
+          </div>
+          <h3 class="font-serif text-xl text-white mb-3">Expert Authentication</h3>
+          <p class="text-gray-400 text-sm">Led by author and historian <a href="https://haroldcarver.info" target="_blank" class="text-gold hover:underline">Harold Carver</a>, every piece is rigorously authenticated using scientific analysis, provenance research, and comparative study across 20+ years of field experience.</p>
+        </div>
+        <div class="text-center fade-in-up">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-dollar-sign text-gold text-2xl"></i>
+          </div>
+          <h3 class="font-serif text-xl text-white mb-3">Competitive Offers</h3>
+          <p class="text-gray-400 text-sm">We pay top market rates based on current auction data and private sale comparables. No lowball offers, no hidden fees, no pressure.</p>
+        </div>
+        <div class="text-center fade-in-up">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+            <i class="fas fa-shield-alt text-gold text-2xl"></i>
+          </div>
+          <h3 class="font-serif text-xl text-white mb-3">Secure & Discreet</h3>
+          <p class="text-gray-400 text-sm">Every transaction is handled with absolute discretion. Secure shipping, insured transit, and confidential records for your peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-20 border-y border-gold/20" style="background: linear-gradient(135deg, rgba(212,175,55,0.05), rgba(17,24,39,1), rgba(212,175,55,0.08));">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-serif text-3xl md:text-4xl text-white mb-4 fade-in-up">Have an Artifact to Sell?</h2>
+      <p class="text-gray-300 text-lg mb-8 fade-in-up">Whether it's a single coin or an entire collection, we're interested. Get a free, no-obligation appraisal today.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
+        <a href="/sell.html" class="bg-gold text-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-light transition">Get an Offer</a>
+        <a href="/appraisal.html" class="border-2 border-gold text-gold px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold hover:text-dark transition">Free Appraisal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-lighter border-t border-gold/20 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="font-serif text-2xl text-gold mb-4">iBuyArtifacts</h3>
+          <p class="text-gray-400 text-sm">Premier buyers of authentic ancient artifacts. Trusted by collectors and estates worldwide.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="/" class="hover:text-gold transition">Home</a></li>
+            <li><a href="/gallery.html" class="hover:text-gold transition">Gallery</a></li>
+            <li><a href="/appraisal.html" class="hover:text-gold transition">Free Appraisal</a></li>
+            <li><a href="/sell.html" class="hover:text-gold transition">Sell Your Artifact</a></li>
+            <li><a href="/news.html" class="hover:text-gold transition">News</a></li>
+            <li><a href="https://haroldcarver.info" target="_blank" class="hover:text-gold transition">Harold Carver (Author)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><i class="fas fa-envelope text-gold mr-2"></i><a href="mailto:haroldlovessol@gmail.com" class="hover:text-gold transition">haroldlovessol@gmail.com</a></li>
+            <li><i class="fas fa-globe text-gold mr-2"></i><a href="https://haroldcarver.info" target="_blank" class="hover:text-gold transition">haroldcarver.info</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Follow Harold</h4>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://instagram.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/HaroldCarv43889" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="X/Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.threads.com/@haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Threads"><i class="fab fa-threads"></i></a>
+            <a href="https://bsky.app/profile/haroldcarver.bsky.social" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Bluesky"><i class="fab fa-bluesky"></i></a>
+            <a href="https://linkedin.com/in/harold-carver-142aa63b2" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://pinterest.com/haroldlovessol" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="https://www.youtube.com/@HaroldCarver-m2t" target="_blank" class="text-gray-400 hover:text-gold text-xl transition" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="flex gap-3 mt-3">
+            <a href="https://ko-fi.com/haroldcarver" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-mug-hot mr-1"></i>Ko-fi</a>
+            <a href="https://haroldsolace.gumroad.com" target="_blank" class="text-gray-400 hover:text-gold text-sm transition"><i class="fas fa-book mr-1"></i>Books</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 iBuyArtifacts. All rights reserved. | <a href="#" class="hover:text-gold">Privacy Policy</a> | <a href="#" class="hover:text-gold">Terms of Service</a></p>
+        <p class="mt-2 text-xs">Disclaimer: Market values shown are estimates for illustration purposes only. Actual values vary based on provenance, condition, and authentication.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
