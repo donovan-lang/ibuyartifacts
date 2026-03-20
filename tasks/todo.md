@@ -1,4 +1,11 @@
 
+- [x] ✅ Create responsive landing page with pricing tiers ($49/$149) in appraisal.html — COMPLETED
+  - Added "Transparent Pricing" section with responsive 2-column pricing cards
+  - Basic Appraisal: $49 (5-10 page report, 48-hour turnaround)
+  - Premium Appraisal: $149 (15-25 page report, 24-48 hour turnaround, insurance format)
+  - Updated FAQ to reflect paid appraisal model
+  - Added JavaScript tier selection handler with scroll-to-form
+
 - [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-15 20:32 via HQ)
 
 - [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md, Auto-improve ; Auto-improve ON but no goals defined (assigned 2026-03-17 11:30 via HQ)
@@ -18,3 +25,5 @@
 - [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 13:47 via HQ)
 
 - [ ] Implement next step for: In src/appraisal_form.py, build web form for artifact photo upload + description submission (assigned 2026-03-20 14:39 via HQ)
+
+- [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 15:52 via HQ)
