@@ -35,3 +35,5 @@
 - [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 17:52 via HQ)
 
 - [ ] Read project files and implement the first concrete step toward: In src/email_handler.py, auto-send confirmation email when appraisal request submitted (assigned 2026-03-21 07:28 via HQ)
+
+- [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md, Auto-improve ; Auto-improve ON but no goals defined (assigned 2026-03-21 16:27 via HQ)
