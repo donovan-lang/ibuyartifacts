@@ -44,3 +44,11 @@ This issue has occurred 2 times. Previous fix attempts:
   - 2026-03-20: Cross-check flagged: No README.md or CLAUDE.md, Auto-improve (unresolved)
   - 2026-03-21: Cross-check flagged: No README.md or CLAUDE.md, Auto-improve (unresolved)
 Find the ROOT CAUSE. (assigned 2026-03-21 17:05 via HQ)
+
+- [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md, Auto-improve ; Auto-improve ON but no goals defined
+
+This issue has occurred 3 times. Previous fix attempts:
+  - 2026-03-20: Cross-check flagged: No README.md or CLAUDE.md, Auto-improve (unresolved)
+  - 2026-03-21: Cross-check flagged: No README.md or CLAUDE.md, Auto-improve (unresolved)
+  - 2026-03-21: Cross-check flagged: No README.md or CLAUDE.md, Auto-improve (unresolved)
+Find the ROOT CAUSE. (assigned 2026-03-21 17:51 via HQ)
