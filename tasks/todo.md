@@ -27,3 +27,9 @@
 - [ ] Implement next step for: In src/appraisal_form.py, build web form for artifact photo upload + description submission (assigned 2026-03-20 14:39 via HQ)
 
 - [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 15:52 via HQ)
+
+- [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 16:04 via HQ)
+
+- [ ] Read BUILD_SPEC.md and CLAUDE.md, then implement the first concrete step toward: In templates/appraisal.html, create responsive landing page with pricing tiers ($49/$149) (assigned 2026-03-20 16:18 via HQ)
+
+- [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 17:52 via HQ)
