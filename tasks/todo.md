@@ -33,3 +33,5 @@
 - [ ] Read BUILD_SPEC.md and CLAUDE.md, then implement the first concrete step toward: In templates/appraisal.html, create responsive landing page with pricing tiers ($49/$149) (assigned 2026-03-20 16:18 via HQ)
 
 - [ ] [CROSS-CHECK] Multiple systems flagged ibuyartifacts: No README.md or CLAUDE.md; No README.md or CLAUDE.md (assigned 2026-03-20 17:52 via HQ)
+
+- [ ] Read project files and implement the first concrete step toward: In src/email_handler.py, auto-send confirmation email when appraisal request submitted (assigned 2026-03-21 07:28 via HQ)
