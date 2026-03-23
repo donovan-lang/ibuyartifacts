@@ -7,7 +7,6 @@ import json
 import time
 import urllib.request
 import urllib.parse
-import sys
 
 SEARCH_URL = "https://collectionapi.metmuseum.org/public/collection/v1/search"
 OBJECT_URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
