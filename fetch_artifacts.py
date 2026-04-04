@@ -1,231 +1,208 @@
+#!/usr/bin/env python3
 """
-Fetch 20 real artifact records from the Met Museum Open Access API (CC0 public domain).
-Uses urllib.request only -- no external dependencies.
-Also fetches YouTube video data for Harold Carver books.
+fetch_artifacts.py - Fetch content for iBuyArtifacts platform
+Handles KDP books and YouTube videos for Harold Carver hub
 """
 
 import json
-import time
-import urllib.request
-import urllib.parse
 import os
+import requests
+from typing import List, Dict, Any
+from datetime import datetime
 
-SEARCH_URL = "https://collectionapi.metmuseum.org/public/collection/v1/search"
-OBJECT_URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
-TIMEOUT = 10
-DELAY = 0.2
+# Configuration
+YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
+CHANNEL_ID = 'UCxK8bQvZ9f3J2mN4pL6rT8w'  # Harold Carver channel ID - update with actual ID
+OUTPUT_FILE = 'artifacts_data.json'
+BOOKS_FILE = 'books_data.json'
 
-CATEGORIES = {
-    "Egyptian": [
-        "egyptian scarab",
-        "egyptian amulet",
-        "canopic jar",
-        "ushabti",
-    ],
-    "Roman": [
-        "roman coin",
-        "roman glass vessel",
-        "roman bronze",
-        "roman oil lamp",
-    ],
-    "Greek": [
-        "greek amphora",
-        "greek helmet bronze",
-        "terracotta figurine greek",
-        "greek kylix",
-    ],
-    "Mesopotamian": [
-        "cylinder seal mesopotamia",
-        "cuneiform tablet",
-        "sumerian bronze",
-    ],
-    "Asian": [
-        "tang dynasty horse",
-        "jade bi disc",
-        "shang bronze vessel",
-    ],
-    "Pre-Columbian": [
-        "maya ceramic vessel",
-        "moche portrait vessel",
-    ],
-}
-
-# YouTube API Configuration
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", "")
-YOUTUBE_CHANNEL_ID = "UC_x5XG1OV2P6uZZ5FSM9Ttwg"  # Harold Carver channel ID (placeholder)
-YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3"
-
-
-def fetch_json(url):
-    """Fetch JSON from a URL with timeout."""
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-        return json.loads(resp.read().decode("utf-8"))
-
-
-def search_objects(query):
-    """Search the Met API for public-domain objects with images."""
-    params = urllib.parse.urlencode({
-        "isPublicDomain": "true",
-        "hasImages": "true",
-        "q": query,
-        "limit": 5,
-    })
-    url = f"{SEARCH_URL}?{params}"
-    try:
-        data = fetch_json(url)
-        return data.get("objectIDs", [])
-    except Exception as e:
-        print(f"Error searching for '{query}': {e}")
-        return []
-
-
-def get_object_details(object_id):
-    """Fetch full details for a single object."""
-    url = f"{OBJECT_URL}/{object_id}"
-    try:
-        return fetch_json(url)
-    except Exception as e:
-        print(f"Error fetching object {object_id}: {e}")
-        return None
-
-
-def fetch_artifacts():
-    """Fetch artifacts from Met API."""
-    artifacts = []
-    for category, queries in CATEGORIES.items():
-        for query in queries:
-            object_ids = search_objects(query)
-            for oid in object_ids[:2]:  # Limit to 2 per query
-                obj = get_object_details(oid)
-                if obj:
-                    artifacts.append({
-                        "title": obj.get("title", "Unknown"),
-                        "category": category,
-                        "object_number": obj.get("objectNumber", ""),
-                        "accession_number": obj.get("accessionNumber", ""),
-                        "image_url": obj.get("primaryImage", {}).get("jpg", {}).get("fullsize"),
-                        "description": obj.get("objectDescription", "")
-                    })
-            time.sleep(DELAY)
-    return artifacts
-
-
-def fetch_youtube_books_data():
+def fetch_json(url: str, params: Dict[str, str] = None) -> Dict[str, Any]:
     """
-    Fetch YouTube videos related to Harold Carver books.
-    Returns a list of video objects with title, video_id, and book_slug mapping.
+    Fetch JSON data from a URL with optional query parameters
+    
+    Args:
+        url: The base URL to fetch from
+        params: Optional query parameters as a dictionary
+        
+    Returns:
+        Parsed JSON response as dictionary
+    """
+    try:
+        response = requests.get(url, params=params, timeout=30)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching from {url}: {e}")
+        return {}
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON from {url}: {e}")
+        return {}
+
+def fetch_youtube_books_data() -> List[Dict[str, Any]]:
+    """
+    Query YouTube Data API for Harold Carver channel videos
+    
+    Returns:
+        List of video dictionaries with title, link, thumbnail, etc.
     """
     if not YOUTUBE_API_KEY:
         print("Warning: YOUTUBE_API_KEY not set. Skipping YouTube fetch.")
         return []
+    
+    youtube_videos = []
+    page_token = None
+    
+    # Fetch videos from Harold Carver channel
+    while True:
+        params = {
+            'part': 'snippet,statistics',
+            'channelId': CHANNEL_ID,
+            'order': 'date',
+            'maxResults': 50,
+            'key': YOUTUBE_API_KEY
+        }
+        
+        if page_token:
+            params['pageToken'] = page_token
+        
+        url = 'https://www.googleapis.com/youtube/v3/search'
+        response = fetch_json(url, params)
+        
+        if not response or 'items' not in response:
+            break
+        
+        # Process each video item
+        for item in response.get('items', []):
+            video_type = item.get('id', {}).get('kind')
+            
+            # Only process video items (not playlists or channels)
+            if video_type != 'youtube#video':
+                continue
+            
+            video_id = item.get('id', {}).get('videoId')
+            snippet = item.get('snippet', {})
+            
+            # Fetch detailed video info for statistics
+            video_detail_url = 'https://www.googleapis.com/youtube/v3/videos'
+            video_detail_params = {
+                'part': 'statistics',
+                'id': video_id,
+                'key': YOUTUBE_API_KEY
+            }
+            video_detail = fetch_json(video_detail_url, video_detail_params)
+            
+            statistics = video_detail.get('items', [{}])[0].get('statistics', {})
+            
+            video_data = {
+                'video_id': video_id,
+                'title': snippet.get('title', ''),
+                'description': snippet.get('description', ''),
+                'channel_title': snippet.get('channelTitle', ''),
+                'published_at': snippet.get('publishedAt', ''),
+                'thumbnail': snippet.get('thumbnails', {}).get('high', {}).get('url', ''),
+                'video_link': f'https://www.youtube.com/watch?v={video_id}',
+                'view_count': int(statistics.get('viewCount', 0)),
+                'like_count': int(statistics.get('likeCount', 0)),
+                'comment_count': int(statistics.get('commentCount', 0)),
+                'source': 'youtube'
+            }
+            
+            youtube_videos.append(video_data)
+        
+        # Check if there are more pages
+        page_token = response.get('nextPageToken')
+        if not page_token:
+            break
+    
+    return youtube_videos
 
-    videos = []
-    book_slugs = [
-        "dead_sea_scrolls",
-        "punic_wars",
-        "epic_of_gilgamesh",
-        "gobekli_tepe_v1",
-        "gobekli_tepe_v2",
-        "sumer",
-        "book_of_enoch"
-    ]
-
-    # Search for videos by Harold Carver related to books
-    search_params = urllib.parse.urlencode({
-        "part": "snippet",
-        "channelId": YOUTUBE_CHANNEL_ID,
-        "key": YOUTUBE_API_KEY,
-        "maxResults": 50,
-        "order": "date"
-    })
-    search_url = f"{YOUTUBE_API_URL}/search?{search_params}"
-
+def fetch_kdp_books_data() -> List[Dict[str, Any]]:
+    """
+    Load KDP books data from books_data.json
+    
+    Returns:
+        List of book dictionaries
+    """
     try:
-        search_data = fetch_json(search_url)
-        video_ids = [item["id"]["videoId"] for item in search_data.get("items", []) 
-                     if item["id"]["kind"] == "youtube#video"]
-
-        # Get detailed info for each video
-        if video_ids:
-            details_params = urllib.parse.urlencode({
-                "part": "snippet,contentDetails",
-                "id": ",".join(video_ids[:10]),  # Limit to 10 videos
-                "key": YOUTUBE_API_KEY
-            })
-            details_url = f"{YOUTUBE_API_URL}/videos?{details_params}"
-            details_data = fetch_json(details_url)
-
-            for item in details_data.get("items", []):
-                snippet = item.get("snippet", {})
-                title = snippet.get("title", "")
-                video_id = item.get("id", "")
-                
-                # Try to map video to book slug based on title keywords
-                matched_slug = None
-                for slug in book_slugs:
-                    if slug.replace("_", " ").lower() in title.lower():
-                        matched_slug = slug
-                        break
-                
-                videos.append({
-                    "video_id": video_id,
-                    "title": title,
-                    "book_slug": matched_slug,
-                    "published_at": snippet.get("publishedAt", ""),
-                    "thumbnail": snippet.get("thumbnails", {}).get("high", {}).get("url", "")
-                })
-                time.sleep(DELAY)
-    except Exception as e:
-        print(f"Error fetching YouTube data: {e}")
-
-    return videos
-
-
-def update_books_with_youtube():
-    """Update books_data.json with YouTube video links."""
-    try:
-        with open("books_data.json", "r") as f:
+        with open(BOOKS_FILE, 'r') as f:
             books = json.load(f)
-    except FileNotFoundError:
-        print("books_data.json not found.")
-        return
+        return books
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error loading books data: {e}")
+        return []
 
-    youtube_videos = fetch_youtube_books_data()
+def merge_artifacts(books: List[Dict], videos: List[Dict]) -> List[Dict]:
+    """
+    Merge books and videos into a single artifacts list
     
-    # Create a mapping of book_slug to video data
-    video_map = {}
-    for video in youtube_videos:
-        if video["book_slug"]:
-            if video["book_slug"] not in video_map:
-                video_map[video["book_slug"]] = []
-            video_map[video["book_slug"]].append(video)
-
-    # Update books with YouTube links
-    updated = False
+    Args:
+        books: List of book dictionaries
+        videos: List of video dictionaries
+        
+    Returns:
+        Combined list with all artifacts
+    """
+    artifacts = []
+    
+    # Add books with source tag
     for book in books:
-        slug = book.get("slug")
-        if slug and slug in video_map:
-            book["youtube_videos"] = video_map[slug]
-            updated = True
-
-    if updated:
-        with open("books_data.json", "w") as f:
-            json.dump(books, f, indent=2)
-        print(f"Updated {len(video_map)} books with YouTube video links.")
-    else:
-        print("No books updated with YouTube links.")
-
-
-if __name__ == "__main__":
-    # Fetch artifacts
-    artifacts = fetch_artifacts()
-    print(f"Fetched {len(artifacts)} artifacts from Met API.")
+        book['source'] = 'kdp'
+        artifacts.append(book)
     
-    # Update books with YouTube data
-    update_books_with_youtube()
+    # Add videos with source tag
+    for video in videos:
+        artifacts.append(video)
     
-    # Save artifacts
-    with open("artifacts_data.json", "w") as f:
-        json.dump(artifacts, f, indent=2)
-    print("Saved artifacts to artifacts_data.json")
+    # Sort by date (published_at or created_at)
+    artifacts.sort(key=lambda x: x.get('published_at', x.get('created_at', '')), reverse=True)
+    
+    return artifacts
+
+def save_artifacts(artifacts: List[Dict], filename: str = OUTPUT_FILE):
+    """
+    Save artifacts to JSON file
+    
+    Args:
+        artifacts: List of artifact dictionaries
+        filename: Output filename
+    """
+    output_data = {
+        'generated_at': datetime.now().isoformat(),
+        'total_count': len(artifacts),
+        'books_count': len([a for a in artifacts if a.get('source') == 'kdp']),
+        'videos_count': len([a for a in artifacts if a.get('source') == 'youtube']),
+        'artifacts': artifacts
+    }
+    
+    with open(filename, 'w') as f:
+        json.dump(output_data, f, indent=2)
+    
+    print(f"Saved {len(artifacts)} artifacts to {filename}")
+
+def main():
+    """
+    Main function to fetch and merge all content
+    """
+    print("Starting iBuyArtifacts content fetch...")
+    
+    # Fetch KDP books
+    print("Fetching KDP books...")
+    books = fetch_kdp_books_data()
+    print(f"Found {len(books)} books")
+    
+    # Fetch YouTube videos
+    print("Fetching YouTube videos...")
+    videos = fetch_youtube_books_data()
+    print(f"Found {len(videos)} videos")
+    
+    # Merge all artifacts
+    print("Merging artifacts...")
+    all_artifacts = merge_artifacts(books, videos)
+    
+    # Save to output file
+    save_artifacts(all_artifacts)
+    
+    print("Content fetch complete!")
+
+if __name__ == '__main__':
+    main()

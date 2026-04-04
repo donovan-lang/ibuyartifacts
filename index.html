@@ -56,6 +56,7 @@
           <a href="/appraisal.html" class="nav-link text-gray-300 hover:text-gold transition">Appraisal</a>
           <a href="/news.html" class="nav-link text-gray-300 hover:text-gold transition">News</a>
           <a href="/#books" class="nav-link text-gray-300 hover:text-gold transition">Books</a>
+          <a href="/#videos" class="nav-link text-gray-300 hover:text-gold transition">Videos</a>
           <a href="/sell.html" class="bg-gold text-dark px-5 py-2 rounded-lg font-semibold hover:bg-gold-light transition">Sell Your Artifact</a>
         </div>
         <button id="mobile-menu-btn" class="md:hidden text-gold text-2xl" aria-label="Toggle menu">
@@ -70,6 +71,7 @@
         <a href="/appraisal.html" class="block text-gray-300 hover:text-gold py-2">Appraisal</a>
         <a href="/news.html" class="block text-gray-300 hover:text-gold py-2">News</a>
         <a href="/#books" class="block text-gray-300 hover:text-gold py-2">Books</a>
+        <a href="/#videos" class="block text-gray-300 hover:text-gold py-2">Videos</a>
         <a href="/sell.html" class="block bg-gold text-dark px-4 py-2 rounded-lg text-center font-semibold">Sell Your Artifact</a>
       </div>
     </div>
@@ -338,6 +340,57 @@
     });
   </script>
 
+  <!-- YouTube Videos -->
+  <section id="videos" class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-white mb-4 fade-in-up">Videos by Harold Carver</h2>
+        <div class="section-divider mb-4"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">Watch Harold explore ancient history, authenticate artifacts, and share stories from the field.</p>
+      </div>
+      <div class="video-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="videos-grid"></div>
+      <div class="text-center mt-10">
+        <a href="https://www.youtube.com/@HaroldCarver-m2t" target="_blank" rel="noopener"
+           class="inline-block bg-gold/10 border border-gold/30 text-gold px-8 py-3 rounded-lg font-medium hover:bg-gold hover:text-dark transition">
+          View All Videos on YouTube &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+  fetch('/artifacts_data.json')
+    .then(r => r.json())
+    .then(artifacts => {
+      const grid = document.getElementById('videos-grid');
+      const videos = artifacts.filter(a => a.source === 'youtube');
+      videos.forEach(video => {
+        const card = document.createElement('a');
+        card.href = video.video_link;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.className = 'artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 transition group fade-in-up';
+        card.innerHTML = `
+          <div class="img-zoom aspect-video bg-dark-lighter relative">
+            <img src="${video.thumbnail}" alt="${video.title}" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center group-hover:bg-gold/80 transition">
+                <i class="fas fa-play text-white text-lg ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold transition">${video.title}</h3>
+            <p class="text-gray-400 text-sm mb-2 line-clamp-2">${video.description || ''}</p>
+            <div class="flex items-center gap-3 text-xs text-gray-500">
+              ${video.view_count ? `<span><i class="fas fa-eye mr-1"></i>${Number(video.view_count).toLocaleString()} views</span>` : ''}
+              ${video.published_at ? `<span>${new Date(video.published_at).toLocaleDateString('en-US', {month: 'short', year: 'numeric'})}</span>` : ''}
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    });
+  </script>
+
   <section class="py-20">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
@@ -399,6 +452,7 @@
             <li><a href="/sell.html" class="hover:text-gold transition">Sell Your Artifact</a></li>
             <li><a href="/news.html" class="hover:text-gold transition">News</a></li>
             <li><a href="/#books" class="hover:text-gold transition">Books by Harold Carver</a></li>
+            <li><a href="/#videos" class="hover:text-gold transition">Videos</a></li>
             <li><a href="https://haroldcarver.info" target="_blank" class="hover:text-gold transition">Harold Carver (Author)</a></li>
           </ul>
         </div>

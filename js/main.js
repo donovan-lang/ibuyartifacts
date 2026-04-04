@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMultiStepForm();
   initFileUpload();
   setActiveNavLink();
+  loadYouTubeVideos();
 });
 
 /* Mobile Menu */
@@ -93,26 +94,28 @@ function initMultiStepForm() {
   function showStep(n) {
     steps.forEach((s, i) => s.classList.toggle('hidden', i !== n));
     indicators.forEach((ind, i) => {
-      ind.classList.remove('active', 'completed');
-      if (i < n) ind.classList.add('completed');
-      if (i === n) ind.classList.add('active');
+      ind.classList.toggle('active', i <= n);
     });
     lines.forEach((line, i) => {
-      line.classList.toggle('completed', i < n);
+      line.classList.toggle('active', i < n);
     });
-    current = n;
-    window.scrollTo({ top: document.getElementById('appraisal-form')?.offsetTop - 100 || 0, behavior: 'smooth' });
   }
 
   nextBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      if (current < steps.length - 1) showStep(current + 1);
+      if (current < steps.length - 1) {
+        current++;
+        showStep(current);
+      }
     });
   });
 
   prevBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      if (current > 0) showStep(current - 1);
+      if (current > 0) {
+        current--;
+        showStep(current);
+      }
     });
   });
 
@@ -121,54 +124,88 @@ function initMultiStepForm() {
 
 /* File Upload Preview */
 function initFileUpload() {
-  document.querySelectorAll('.photo-upload').forEach(input => {
-    const previewId = input.dataset.preview;
-    const preview = document.getElementById(previewId);
-    if (!preview) return;
+  const input = document.getElementById('artifact-photo');
+  const preview = document.getElementById('photo-preview');
+  if (!input || !preview) return;
 
-    input.addEventListener('change', () => {
-      preview.innerHTML = '';
-      const files = Array.from(input.files).slice(0, 5);
-      files.forEach(file => {
-        if (!file.type.startsWith('image/')) return;
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const div = document.createElement('div');
-          div.className = 'relative w-20 h-20 rounded-lg overflow-hidden border border-gold/30';
-          div.innerHTML = `
-            <img src="${e.target.result}" class="w-full h-full object-cover" alt="Upload preview">
-            <button type="button" onclick="this.parentElement.remove()" class="absolute top-0 right-0 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-bl">&times;</button>`;
-          preview.appendChild(div);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  });
-}
-
-/* Active Nav Link */
-function setActiveNavLink() {
-  const path = window.location.pathname;
-  document.querySelectorAll('nav a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href === '#') return;
-    const isActive = (path === '/' && href === '/') ||
-                     (path === '/index.html' && href === '/') ||
-                     (href !== '/' && path.includes(href));
-    if (isActive && !link.classList.contains('bg-gold')) {
-      link.classList.add('text-gold');
-      link.classList.remove('text-gray-300');
+  input.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
     }
   });
 }
 
-/* Smooth scroll for anchor links */
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a[href^="#"]');
-  if (!link) return;
-  const target = document.querySelector(link.getAttribute('href'));
-  if (target) {
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+/* Set Active Nav Link */
+function setActiveNavLink() {
+  const currentPath = window.location.pathname;
+  const links = document.querySelectorAll('nav a');
+  links.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    }
+  });
+}
+
+/* Load YouTube Videos */
+async function loadYouTubeVideos() {
+  const container = document.getElementById('youtube-videos');
+  if (!container) return;
+
+  try {
+    const response = await fetch('youtube_data.json');
+    if (!response.ok) throw new Error('Failed to fetch youtube_data.json');
+    
+    const data = await response.json();
+    const videos = Array.isArray(data) ? data : (data.videos || []);
+
+    if (videos.length === 0) {
+      container.innerHTML = '<p class="text-gray-500">No videos available yet.</p>';
+      return;
+    }
+
+    container.innerHTML = videos.map(video => {
+      const videoId = video.videoId || video.id;
+      const title = video.title || 'Untitled Video';
+      const thumbnail = video.thumbnail || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const publishedAt = video.publishedAt || '';
+      const date = publishedAt ? new Date(publishedAt).toLocaleDateString() : '';
+
+      return `
+        <div class="artifact-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 fade-in-up">
+          <div class="relative">
+            <img src="${thumbnail}" alt="${title}" class="w-full h-48 object-cover">
+            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
+              <div class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center">
+                <i class="fas fa-play text-white text-xl ml-1"></i>
+              </div>
+            </a>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">${title}</h3>
+            ${date ? `<p class="text-sm text-gray-500">${date}</p>` : ''}
+            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block text-gold-600 hover:text-gold-700 font-medium">
+              Watch on YouTube <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Re-initialize scroll animations for new elements
+    setTimeout(() => initScrollAnimations(), 100);
+  } catch (error) {
+    console.error('Error loading YouTube videos:', error);
+    container.innerHTML = `
+      <div class="text-center py-8">
+        <p class="text-red-500 mb-2">Unable to load videos</p>
+        <p class="text-sm text-gray-500">${error.message}</p>
+      </div>
+    `;
   }
-});
+}
