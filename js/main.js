@@ -154,58 +154,81 @@ function setActiveNavLink() {
 
 /* Load YouTube Videos */
 async function loadYouTubeVideos() {
-  const container = document.getElementById('youtube-videos');
+  const container = document.getElementById('videos-grid');
   if (!container) return;
+
+  // Fallback data matching fetch_artifacts.py FALLBACK_VIDEOS
+  const FALLBACK_VIDEOS = [
+    {
+      videoId: 'xn2I-lF9LHU',
+      title: "Oda Nobunaga: Japan's Revolutionary Warlord | History Unveiled",
+      thumbnail: 'https://i9.ytimg.com/vi/xn2I-lF9LHU/hqdefault.jpg',
+      publishedAt: '2026-04-04T15:03:28Z'
+    },
+    {
+      videoId: 'kL17PPSLAMc',
+      title: "The Peasants' Revolt: England's Forgotten Uprising",
+      thumbnail: 'https://i9.ytimg.com/vi/kL17PPSLAMc/hqdefault.jpg',
+      publishedAt: '2026-04-04T15:02:42Z'
+    },
+    {
+      videoId: 'umLHUHzXTSk',
+      title: "The Peasants' Revolt: England's Forgotten Uprising",
+      thumbnail: 'https://i9.ytimg.com/vi/umLHUHzXTSk/hqdefault.jpg',
+      publishedAt: '2026-04-04T15:02:19Z'
+    },
+    {
+      videoId: 'wLFGAxmzots',
+      title: 'Greek Fire: The Ancient Superweapon That Saved an Empire',
+      thumbnail: 'https://i9.ytimg.com/vi/wLFGAxmzots/hqdefault.jpg',
+      publishedAt: '2026-04-04T15:01:38Z'
+    }
+  ];
+
+  let videos = [];
 
   try {
     const response = await fetch('youtube_data.json');
-    if (!response.ok) throw new Error('Failed to fetch youtube_data.json');
-    
+    if (!response.ok) throw new Error('Failed to fetch');
     const data = await response.json();
-    const videos = Array.isArray(data) ? data : (data.videos || []);
-
-    if (videos.length === 0) {
-      container.innerHTML = '<p class="text-gray-500">No videos available yet.</p>';
-      return;
-    }
-
-    container.innerHTML = videos.map(video => {
-      const videoId = video.videoId || video.id;
-      const title = video.title || 'Untitled Video';
-      const thumbnail = video.thumbnail || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-      const publishedAt = video.publishedAt || '';
-      const date = publishedAt ? new Date(publishedAt).toLocaleDateString() : '';
-
-      return `
-        <div class="artifact-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 fade-in-up">
-          <div class="relative">
-            <img src="${thumbnail}" alt="${title}" class="w-full h-48 object-cover">
-            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity">
-              <div class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center">
-                <i class="fas fa-play text-white text-xl ml-1"></i>
-              </div>
-            </a>
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">${title}</h3>
-            ${date ? `<p class="text-sm text-gray-500">${date}</p>` : ''}
-            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block text-gold-600 hover:text-gold-700 font-medium">
-              Watch on YouTube <i class="fas fa-external-link-alt ml-1 text-xs"></i>
-            </a>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    // Re-initialize scroll animations for new elements
-    setTimeout(() => initScrollAnimations(), 100);
-  } catch (error) {
-    console.error('Error loading YouTube videos:', error);
-    container.innerHTML = `
-      <div class="text-center py-8">
-        <p class="text-red-500 mb-2">Unable to load videos</p>
-        <p class="text-sm text-gray-500">${error.message}</p>
-      </div>
-    `;
+    videos = Array.isArray(data) ? data : (data.videos || []);
+  } catch (e) {
+    console.warn('youtube_data.json unavailable, using fallback videos:', e.message);
   }
+
+  if (videos.length === 0) {
+    videos = FALLBACK_VIDEOS;
+  }
+
+  renderVideoCards(container, videos);
+  setTimeout(() => initScrollAnimations(), 100);
+}
+
+function renderVideoCards(container, videos) {
+  videos.forEach(video => {
+    const videoId = video.videoId || video.id || '';
+    const title = video.title || 'Untitled Video';
+    const publishedAt = video.publishedAt || '';
+    const pubDate = publishedAt
+      ? new Date(publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+      : '';
+
+    const card = document.createElement('div');
+    card.className = 'bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 transition fade-in-up';
+    card.innerHTML = `
+      <div class="aspect-video">
+        <iframe src="https://www.youtube.com/embed/${videoId}" title="${title}"
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy" class="w-full h-full"></iframe>
+      </div>
+      <div class="p-5">
+        <h3 class="font-serif text-lg text-white mb-2">${title}</h3>
+        ${pubDate ? `<p class="text-xs text-gray-500 mb-3">${pubDate}</p>` : ''}
+        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 text-gold px-4 py-2 rounded-lg text-sm font-medium hover:bg-gold hover:text-dark transition">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>`;
+    container.appendChild(card);
+  });
 }

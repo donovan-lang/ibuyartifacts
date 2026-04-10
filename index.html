@@ -357,37 +357,6 @@
       </div>
     </div>
   </section>
-  <script>
-  fetch('/youtube_data.json')
-    .then(r => r.json())
-    .then(data => {
-      const grid = document.getElementById('videos-grid');
-      const videos = data.videos || [];
-      videos.forEach(video => {
-        const card = document.createElement('div');
-        card.className = 'bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 transition fade-in-up';
-        const pubDate = video.publishedAt
-          ? new Date(video.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-          : '';
-        card.innerHTML = `
-          <div class="aspect-video">
-            <iframe src="https://www.youtube.com/embed/${video.videoId}" title="${video.title}"
-              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy" class="w-full h-full"></iframe>
-          </div>
-          <div class="p-5">
-            <h3 class="font-serif text-lg text-white mb-2">${video.title}</h3>
-            ${pubDate ? `<p class="text-xs text-gray-500 mb-3">${pubDate}</p>` : ''}
-            <a href="https://www.amazon.com/s?k=harold+carver+history&tag=haroldcarver-20" target="_blank" rel="noopener"
-               class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 text-gold px-4 py-2 rounded-lg text-sm font-medium hover:bg-gold hover:text-dark transition">
-              <i class="fas fa-book"></i> Buy the Book
-            </a>
-          </div>`;
-        grid.appendChild(card);
-      });
-    });
-  </script>
-
   <section class="py-20">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
