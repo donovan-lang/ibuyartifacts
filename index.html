@@ -348,7 +348,7 @@
         <div class="section-divider mb-4"></div>
         <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">Watch Harold explore ancient history, authenticate artifacts, and share stories from the field.</p>
       </div>
-      <div class="video-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="videos-grid"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 stagger-children" id="videos-grid"></div>
       <div class="text-center mt-10">
         <a href="https://www.youtube.com/@HaroldCarver-m2t" target="_blank" rel="noopener"
            class="inline-block bg-gold/10 border border-gold/30 text-gold px-8 py-3 rounded-lg font-medium hover:bg-gold hover:text-dark transition">
@@ -358,33 +358,30 @@
     </div>
   </section>
   <script>
-  fetch('/artifacts_data.json')
+  fetch('/youtube_data.json')
     .then(r => r.json())
-    .then(artifacts => {
+    .then(data => {
       const grid = document.getElementById('videos-grid');
-      const videos = artifacts.filter(a => a.source === 'youtube');
+      const videos = data.videos || [];
       videos.forEach(video => {
-        const card = document.createElement('a');
-        card.href = video.video_link;
-        card.target = '_blank';
-        card.rel = 'noopener';
-        card.className = 'artifact-card bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 transition group fade-in-up';
+        const card = document.createElement('div');
+        card.className = 'bg-dark-card rounded-lg overflow-hidden border border-gray-800 hover:border-gold/50 transition fade-in-up';
+        const pubDate = video.publishedAt
+          ? new Date(video.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+          : '';
         card.innerHTML = `
-          <div class="img-zoom aspect-video bg-dark-lighter relative">
-            <img src="${video.thumbnail}" alt="${video.title}" class="w-full h-full object-cover" loading="lazy">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center group-hover:bg-gold/80 transition">
-                <i class="fas fa-play text-white text-lg ml-1"></i>
-              </div>
-            </div>
+          <div class="aspect-video">
+            <iframe src="https://www.youtube.com/embed/${video.videoId}" title="${video.title}"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy" class="w-full h-full"></iframe>
           </div>
           <div class="p-5">
-            <h3 class="font-serif text-lg text-white mb-2 group-hover:text-gold transition">${video.title}</h3>
-            <p class="text-gray-400 text-sm mb-2 line-clamp-2">${video.description || ''}</p>
-            <div class="flex items-center gap-3 text-xs text-gray-500">
-              ${video.view_count ? `<span><i class="fas fa-eye mr-1"></i>${Number(video.view_count).toLocaleString()} views</span>` : ''}
-              ${video.published_at ? `<span>${new Date(video.published_at).toLocaleDateString('en-US', {month: 'short', year: 'numeric'})}</span>` : ''}
-            </div>
+            <h3 class="font-serif text-lg text-white mb-2">${video.title}</h3>
+            ${pubDate ? `<p class="text-xs text-gray-500 mb-3">${pubDate}</p>` : ''}
+            <a href="https://www.amazon.com/s?k=harold+carver+history&tag=haroldcarver-20" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 text-gold px-4 py-2 rounded-lg text-sm font-medium hover:bg-gold hover:text-dark transition">
+              <i class="fas fa-book"></i> Buy the Book
+            </a>
           </div>`;
         grid.appendChild(card);
       });

@@ -1,0 +1,50 @@
+[
+  {
+    "timestamp": "2026-04-05T17:33:42.405255+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: When reading data from sibling directories (e.g., ../youtube-pipeline), verify the relative path exists and is accessible before attempting to parse JSON. Do not attempt to render HTML and read data in the same session if the data read is failing."
+  },
+  {
+    "timestamp": "2026-04-05T18:03:46.590380+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Before reading external queue files, verify the file path exists and print the first 5 lines to debug. Scope the task to just creating the youtube_data.json file before moving to the HTML rendering."
+  },
+  {
+    "timestamp": "2026-04-05T18:33:45.808169+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Before reading queue data or processing artifacts, check for rate limits and ensure the logic is offline-capable. Scope tasks to single file reads without external API dependencies."
+  },
+  {
+    "timestamp": "2026-04-05T19:05:44.075776+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Before reading external data files, check rate limits. If rate limited, use cached data or mock responses to complete the task."
+  },
+  {
+    "timestamp": "2026-04-05T22:12:45.453679+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Before reading external JSON files, verify the file path exists and the file is not empty. Handle JSON parsing errors gracefully."
+  },
+  {
+    "timestamp": "2026-04-06T13:17:07.445105+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Before reading queue.json, check API rate limit. If hit, wait for reset. Scope task to single file read operation."
+  },
+  {
+    "timestamp": "2026-04-06T13:47:49.955858+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Check API rate limit status before fetching data. If limit is hit, wait for reset time (6pm CST) instead of retrying immediately."
+  },
+  {
+    "timestamp": "2026-04-06T14:17:18.735836+00:00",
+    "task": "[Brain] Episode pattern analysis (0.3 success rate)",
+    "outcome": "ANALYSIS",
+    "lesson": "LEARNED: Reading external data files or APIs is prone to rate limiting. Before reading or fetching data, verify the rate limit status. If limited, wait for the reset time before attempting the read operation."
+  }
+]
