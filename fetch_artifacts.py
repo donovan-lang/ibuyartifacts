@@ -22,7 +22,7 @@ from datetime import datetime
 # Configuration
 YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
 FORCE_UPDATE = os.getenv('FORCE_UPDATE', '').lower() == 'true'
-CHANNEL_ID = 'UCxK8bQvZ9f3J2mN4pL6rT8w'  # Harold Carver channel ID - update with actual ID
+CHANNEL_ID = 'UC8EEITc5YIKUmPiLZJbWoOg'  # Harold Carver YouTube channel
 OUTPUT_FILE = 'artifacts_data.json'
 BOOKS_FILE = 'books_data.json'
 YOUTUBE_DATA_FILE = 'youtube_data.json'
