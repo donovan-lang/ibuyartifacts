@@ -2,7 +2,7 @@ name: Update YouTube Data
 
 on:
   schedule:
-    # Run daily at 6:00 AM UTC (midnight CST)
+    # Run daily at 6:00 AM UTC (midnight CST / 1 AM CDT)
     - cron: '0 6 * * *'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
