@@ -1,0 +1,39 @@
+name: Update YouTube Data
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (midnight CST)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  update-youtube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch fresh YouTube data
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          FORCE_UPDATE: 'true'
+        run: python fetch_artifacts.py
+
+      - name: Commit updated data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet youtube_data.json artifacts_data.json || {
+            git add youtube_data.json artifacts_data.json
+            git commit -m "chore: update YouTube data (scheduled)"
+            git push
+          }
