@@ -3,8 +3,13 @@
 fetch_artifacts.py - Fetch content for iBuyArtifacts platform
 Handles KDP books and YouTube videos for Harold Carver hub
 
+YouTube data update modes:
+  - Default (deploy): reads from local youtube_data.json (no API calls)
+  - FORCE_UPDATE=true: fetches fresh data from YouTube API and updates youtube_data.json
+    Use this in scheduled jobs (GitHub Actions cron) to keep data current.
+
 Graceful degradation: when YouTube API quota is exhausted, falls back
-to cached/static youtube_data.json so the deployment pipeline proceeds.
+to cached/static youtube_data.json so the pipeline proceeds.
 """
 
 import json
@@ -16,6 +21,7 @@ from datetime import datetime
 
 # Configuration
 YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
+FORCE_UPDATE = os.getenv('FORCE_UPDATE', '').lower() == 'true'
 CHANNEL_ID = 'UCxK8bQvZ9f3J2mN4pL6rT8w'  # Harold Carver channel ID - update with actual ID
 OUTPUT_FILE = 'artifacts_data.json'
 BOOKS_FILE = 'books_data.json'
@@ -266,23 +272,28 @@ def main():
     books = fetch_kdp_books_data()
     print(f"Found {len(books)} books")
 
-    # Fetch YouTube videos (graceful degradation on quota errors)
-    print("Fetching YouTube videos...")
-    videos = fetch_youtube_books_data()
-    print(f"Found {len(videos)} videos")
+    # YouTube videos: only hit the API when FORCE_UPDATE=true (scheduled job)
+    # Otherwise, read from local youtube_data.json (fast, no API quota usage)
+    if FORCE_UPDATE:
+        print("FORCE_UPDATE=true — fetching fresh YouTube data from API...")
+        videos = fetch_youtube_books_data()
+        print(f"Fetched {len(videos)} videos from API")
 
-    # Save youtube_data.json for the frontend
-    # Convert to the format the frontend expects (videoId, title, thumbnail, publishedAt)
-    frontend_videos = []
-    for v in videos:
-        frontend_videos.append({
-            'videoId': v.get('video_id') or v.get('videoId', ''),
-            'title': v.get('title', ''),
-            'thumbnail': v.get('thumbnail', ''),
-            'publishedAt': v.get('published_at') or v.get('publishedAt', ''),
-            'description': v.get('description', '')
-        })
-    save_youtube_data(frontend_videos)
+        # Save youtube_data.json for the frontend
+        frontend_videos = []
+        for v in videos:
+            frontend_videos.append({
+                'videoId': v.get('video_id') or v.get('videoId', ''),
+                'title': v.get('title', ''),
+                'thumbnail': v.get('thumbnail', ''),
+                'publishedAt': v.get('published_at') or v.get('publishedAt', ''),
+                'description': v.get('description', '')
+            })
+        save_youtube_data(frontend_videos)
+    else:
+        print("Reading YouTube data from local youtube_data.json (set FORCE_UPDATE=true to refresh)...")
+        videos = load_cached_youtube_data()
+        print(f"Loaded {len(videos)} videos from cache")
 
     # Merge all artifacts
     print("Merging artifacts...")
